@@ -89,6 +89,7 @@
         
         echo "<h3>O resultado é: $resultado</h3>";
     }
+    echo oi brito;
     ?>
     </form>
     
