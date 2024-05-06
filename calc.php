@@ -25,7 +25,7 @@
         margin-bottom: 10px;
         font-weight: bold;
     }
-    input[type="text"]{
+    input[type="number"]{
         width: 100%;
         padding: 8px;
         margin-bottom: 20px;
@@ -44,8 +44,13 @@
     } 
     input[type="submit"]:hover {
         background-color: #45a049;
+        }
+    input[type=number]::-webkit-outer-spin,
+    input[type=number]::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
     }
-  
+   
 
     </style>
 <body>
@@ -110,16 +115,16 @@
  <div class = "container">
     <h2>Calculadora PHP</h2>
     <form method="post">
-        <input type="text" name="num1" value="<?= $num1 ?>" placeholder="Digite o primeiro número">
+        <input type="number" name="num1" value="<?= $num1 ?>" placeholder="Digite o primeiro número">
         <select name="operador">
-            <option value="+" <?= ($operador == '+') ? 'selected' : '' ?>>Somar</option>
-            <option value="-" <?= ($operador == '-') ? 'selected' : '' ?>>Subtrair</option>
-            <option value="x" <?= ($operador == 'x') ? 'selected' : '' ?>>Multiplicar</option>
-            <option value="/" <?= ($operador == '/') ? 'selected' : '' ?>>Dividir</option>
+            <option value="+" <?= ($operador == '+') ? 'selected' : '' ?>>Somar (+)</option>
+            <option value="-" <?= ($operador == '-') ? 'selected' : '' ?>>Subtrair (-)</option>
+            <option value="x" <?= ($operador == 'x') ? 'selected' : '' ?>>Multiplicar (*)</option>
+            <option value="/" <?= ($operador == '/') ? 'selected' : '' ?>>Dividir (/)</option>
             <option value="!" <?= ($operador == '!') ? 'selected' : '' ?>>Fatorial (n!)</option>
             <option value="^" <?= ($operador == '^') ? 'selected' : '' ?>>Potenciar (^)</option>
         </select>
-        <input type="text" name="num2" value="<?= $num2 ?>" placeholder="Digite o segundo número">
+        <input type="number" name="num2" value="<?= $num2 ?>" placeholder="Digite o segundo número">
             <button type="submit" name="calcular" value="Calcular" class="btn btn-outline-success">Calcular</button>
             <button type="submit" name="salvar" class="btn btn-outline-warning">Salvar</button>
             <button type="submit" name="pegar" class="btn btn-outline-warning">Pegar</button>
@@ -129,6 +134,9 @@
 
     <?php
     // Exibe o resultado do cálculo se existir
+
+    
+        
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calcular'])) {
 
         if($_POST['calcular'] == "Calcular"){ 
@@ -147,6 +155,7 @@
         session_destroy();
     }
 
+    
     exibirHistorico();
 
     
