@@ -37,13 +37,14 @@ function realizarCalculo($num1, $num2, $operador) {
 
 // Função para calcular fatorial
 function factorial($n) {
-    if ($n == 0) {
+    if ($n < 0) {
+        return "Não existe fatorial para numero negativo.";
+    } elseif ($n == 0) {
         return 1;
     } else {
         return $n * factorial($n - 1);
     }
 }
-
 
 function adicionarAoHistorico($historico) {
     if($historico[3] != "deu n"){
